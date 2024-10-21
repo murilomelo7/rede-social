@@ -1,0 +1,25 @@
+{
+  "name": "backend-rede-social",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev src/server.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.35.2",
+    "fastify": "^5.0.0",
+    "fastify-cli": "^7.0.1",
+    "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.7",
+    "@types/pg": "^8.11.10",
+    "drizzle-kit": "^0.26.2",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  }
+}
