@@ -9,7 +9,6 @@ import fastify, {
 const environment = "development";
 
 
-const server: FastifyInstance = fastify();
 
 const loggerConfig = () => {
   if (environment === "development") {
@@ -25,6 +24,13 @@ const loggerConfig = () => {
     true;
   }
 };
+
+const server: FastifyInstance = fastify();
+
+
+class App {
+
+}
 
 server.get("/login", async (request: FastifyRequest, reply: FastifyReply) => {
   
