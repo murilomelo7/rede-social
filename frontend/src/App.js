@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Inicial from './pages/Inicial/Inicial';
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+
+// Configuração do tema em modo escuro
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    main: '#ff5252',
+
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      {/* CssBaseline aplica o fundo escuro e configurações globais */}
+      <CssBaseline />
+      <Inicial />
+    </ThemeProvider>
   );
 }
 

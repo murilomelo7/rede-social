@@ -6,15 +6,11 @@ import fastify, {
 } from "fastify";
 
 
+import usersRoutes from "./api/routes/users.routes";
 
 
 const app: FastifyInstance = fastify();
 
-
-app.get("/login", async (request: FastifyRequest, reply: FastifyReply) => {
-  
-});
-
-
+app.register(usersRoutes, { prefix: "/users" });
 
 export default app;
