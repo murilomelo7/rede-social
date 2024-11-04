@@ -1,6 +1,11 @@
 import React from 'react';
+
 import Inicial from './pages/Inicial/Inicial';
+import Login from './pages/Login/Login';
+import Cadastro from './pages/Cadastro/Cadastro';
+
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // Configuração do tema em modo escuro
 const darkTheme = createTheme({
@@ -10,13 +15,26 @@ const darkTheme = createTheme({
 
   },
 });
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+    main: '#ff5252',
+
+  },
+});
 
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
-      {/* CssBaseline aplica o fundo escuro e configurações globais */}
       <CssBaseline />
-      <Inicial />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Inicial />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+
+          </Routes>
+      </Router>
     </ThemeProvider>
   );
 }
