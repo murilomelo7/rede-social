@@ -6,13 +6,16 @@ import Cadastro from './pages/Cadastro/Cadastro';
 
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { deepPurple, lightBlue } from '@mui/material/colors';
 
 // Configuração do tema em modo escuro
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
-    main: '#ff5252',
-
+    palette: {
+      primary: deepPurple,
+      secondary: lightBlue,
+    },
   },
 });
 const lightTheme = createTheme({

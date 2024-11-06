@@ -32,7 +32,8 @@ function Inicial() {
 
   return (
     <Box sx={{ height: '100vh',
-       
+      backgroundImage: 'linear-gradient(to left, #4a148c, #9b59b6)',
+
       display: 'flex' }}>
       <Box 
         sx={{ 
@@ -40,7 +41,6 @@ function Inicial() {
           display: 'flex', 
           alignItems: 'center', 
           justifyContent: 'center' ,
-          backgroundImage: 'linear-gradient(to left, #121212, #5f258e)',
 
           
         }}
@@ -90,7 +90,7 @@ function Inicial() {
               </Button>
             </form>
           <Button variant="outlined" color="primary" onClick={handleCadastroClick}>
-            Cadastrar
+            Criar conta
           </Button>
         </Stack>
       </Box>
