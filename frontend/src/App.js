@@ -7,6 +7,7 @@ import Cadastro from './pages/Cadastro/Cadastro';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { deepPurple, lightBlue } from '@mui/material/colors';
+import Layout from './pages/Layout/Layout';
 
 // Configuração do tema em modo escuro
 const darkTheme = createTheme({
@@ -35,6 +36,7 @@ function App() {
           <Route path="/" element={<Inicial />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/home" element={<Layout />} />
 
           </Routes>
       </Router>
