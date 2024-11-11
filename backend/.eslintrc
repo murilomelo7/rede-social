@@ -1,0 +1,25 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "prettier", "simple-import-sort"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": true,                  // Adiciona ponto e vírgula no final
+        "singleQuote": true,            // Usa aspas simples
+        "trailingComma": "all"          // Adiciona vírgula no final de objetos/arrays
+      }
+    ],
+    "semi": ["error", "always"],        // Garante o ponto e vírgula final
+    "simple-import-sort/imports": "error",  // Organiza os imports automaticamente
+    "simple-import-sort/exports": "error"
+  }
+}

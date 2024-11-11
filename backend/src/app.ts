@@ -9,7 +9,10 @@ import fastify, {
 import usersRoutes from "./api/routes/users.routes";
 
 
-const app: FastifyInstance = fastify();
+const app: FastifyInstance = 
+
+
+fastify();
 
 app.register(usersRoutes, { prefix: "/users" });
 
