@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 
  function Cadastro(){
+  const navigate = useNavigate();
 
   const [formValue, setFormValue] = useState({});
 
@@ -12,6 +14,11 @@ import { Box, Button, Stack, TextField, Typography } from "@mui/material";
     console.log(formValue);
 
   };
+
+
+  const handleVoltaLoginClick = () => {
+    navigate('/');
+  }
 
   return (
     <Box sx={{ height: '100vh',           
@@ -99,6 +106,9 @@ import { Box, Button, Stack, TextField, Typography } from "@mui/material";
             Criar
           </Button>
         </form>
+          <Button variant="outlined" color="primary" onClick={handleVoltaLoginClick}>
+            Voltar para o login
+          </Button>
         </Stack>
       </Box>
 

@@ -1,28 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CssBaseline, Typography, Box, Toolbar, Container } from '@mui/material';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Navbar from '../../components/Navbar/Navbar';
+import Feed from '../../components/Feed/Feed';
+import NewPostForm from '../../components/NewPostForm/NewPostForm';
+import Post from '../../components/Post/Post';
 
-const drawerWidth = 240;
 
 function Layout() {
+  
+  const [posts, setPosts] = useState([
+  ]);
+
+  const handleNewPost = (newPost) => {
+    setPosts([newPost, ...posts]);  // Adiciona a nova postagem ao início do array de postagens
+  };
+
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-
       <Sidebar />
-
-      {/* Conteúdo principal centralizado */}
-      <Box component="main" sx={{ flexGrow: 1, ml: `${drawerWidth}px` }}>
-        <Toolbar />
+      <Box component="main" sx={{ flexGrow: 1}}>
         <Container maxWidth="md">
-          <Typography variant="h4" gutterBottom>
-            Home
-          </Typography>
-          {/* Conteúdo principal */}
-          <Typography variant="body1" color="text.secondary">
-            Aqui vai o conteúdo principal da página, como o feed de postagens ou tweets.
-          </Typography>
+            <Typography variant="h4" gutterBottom style={{marginTop:'10px'}}>
+                Home
+            </Typography>
+            <Typography variant="h4" gutterBottom>
+                <NewPostForm onPostSubmit={handleNewPost} />
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+            {posts.map((post, index) => (
+              <Post key={index} title={post.title} content={post.content} />
+            ))}
+            </Typography>
         </Container>
       </Box>
       <Navbar />
