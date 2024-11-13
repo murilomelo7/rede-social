@@ -1,22 +1,38 @@
-import { Bookmark, Home, Mail, Notifications, Search } from "@mui/icons-material";
-import { Box, Drawer, InputAdornment, List, ListItem, ListItemIcon, ListItemText, TextField, Toolbar } from "@mui/material";
+import {
+  Bookmark,
+  Home,
+  Mail,
+  Notifications,
+  Search,
+} from "@mui/icons-material";
+import {
+  Box,
+  Drawer,
+  InputAdornment,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  TextField,
+  Toolbar,
+} from "@mui/material";
 
-function Navbar (){
-  const drawerWidth = 350;
+function Navbar() {
+  const drawerWidth = 400;
 
   return (
     <Drawer
-    variant="permanent"
-    anchor="right"
-    sx={{
-      width: drawerWidth,
-      flexShrink: 0,
-      [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-    }}
-  >
-      <Box sx={{ overflow: 'auto' }}>
-      <List>
-        <ListItem>
+      variant="permanent"
+      anchor="right"
+      sx={{
+        width: drawerWidth,
+        flexShrink: 0,
+        [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: "border-box" },
+      }}
+    >
+      <Box sx={{ overflow: "auto" }}>
+        <List>
+          <ListItem>
             <TextField
               type="search"
               // label="Pesquisar"
@@ -24,7 +40,7 @@ function Navbar (){
               variant="outlined"
               fullWidth
               autoComplete="off"
-              value={''} 
+              value={""}
               // onChange={(e) => setFormValue(prevState => ({ ...prevState, name: e.target.value }))}
               InputProps={{
                 endAdornment: (
@@ -32,13 +48,13 @@ function Navbar (){
                     <Search />
                   </InputAdornment>
                 ),
-                style: { borderRadius: '20px' }, // Define o arredondamento aqui
+                style: { borderRadius: "20px" }, // Define o arredondamento aqui
               }}
-            />  
+            />
           </ListItem>
-      </List>
-    </Box>
-  </Drawer>
+        </List>
+      </Box>
+    </Drawer>
   );
 }
 
