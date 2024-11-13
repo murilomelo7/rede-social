@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { TextField, Button, Box, Typography, Stack } from '@mui/material';
+import React, { useState } from "react";
+import { TextField, Button, Box, Typography, Stack } from "@mui/material";
 
 // Componente de Formulário de Nova Postagem
 function NewPostForm({ onPostSubmit }) {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -12,16 +12,22 @@ function NewPostForm({ onPostSubmit }) {
     onPostSubmit({ title, content });
 
     // Limpa os campos do formulário após o envio
-    setTitle('');
-    setContent('');
+    setTitle("");
+    setContent("");
   };
 
   return (
-    <Box sx={{ marginBottom: '20px', backgroundColor: 'background.paper', borderRadius: '8px' }}>
+    <Box
+      sx={{
+        marginBottom: "20px",
+        backgroundColor: "background.paper",
+        borderRadius: "8px",
+      }}
+    >
       <form onSubmit={handleSubmit}>
         <Stack spacing={2}>
           <TextField
-            placeholder='O que está pensando?'
+            placeholder="O que está pensando?"
             variant="outlined"
             fullWidth
             multiline
@@ -30,9 +36,17 @@ function NewPostForm({ onPostSubmit }) {
             onChange={(e) => setContent(e.target.value)}
             required
           />
-          <Button type="submit" variant="contained" color="primary">
-            Postar
-          </Button>
+
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              size="small"
+            >
+              Postar
+            </Button>
+          </Box>
         </Stack>
       </form>
     </Box>

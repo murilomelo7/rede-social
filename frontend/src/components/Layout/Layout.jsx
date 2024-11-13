@@ -16,13 +16,13 @@ function Layout({ children }) {
         component="main"
         sx={{
           flexGrow: 1,
-          backgroundColor: "#1e1e1e",
           minHeight: "100vh",
           padding: 0,
           margin: 0,
           paddingTop: 0,
           marginTop: 0,
           display: "flex",
+          width: "100%",
         }}
       >
         <Container
@@ -30,6 +30,7 @@ function Layout({ children }) {
           sx={{
             backgroundColor: "#121212",
             minHeight: "100vh",
+            width: "100%",
           }}
         >
           {children}
