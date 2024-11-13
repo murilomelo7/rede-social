@@ -17,6 +17,7 @@ import { deepPurple, lightBlue } from "@mui/material/colors";
 import lightTheme from "./themes/lightTheme";
 import darkTheme from "./themes/darkTheme";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
+import Profile from "./pages/Profile/Profile";
 
 // Configuração do tema em modo escuro
 const darkThemeMode = createTheme(darkTheme);
@@ -38,6 +39,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/home" element={<Layout children={<Home />} />} />
+          <Route path="/profile" element={<Layout children={<Profile />} />} />
         </Routes>
         <IconButton
           onClick={toggleTheme}
