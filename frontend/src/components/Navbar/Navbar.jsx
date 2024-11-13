@@ -18,7 +18,7 @@ import {
 } from "@mui/material";
 
 function Navbar() {
-  const drawerWidth = 400;
+  const drawerWidth = 300;
 
   return (
     <Drawer

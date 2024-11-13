@@ -3,30 +3,24 @@ import React, { useState } from "react";
 import Inicial from "./pages/Inicial/Inicial";
 import Login from "./pages/Login/Login";
 import Cadastro from "./pages/Cadastro/Cadastro";
-import Layout from "./pages/Layout/Layout";
+import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home/Home";
 
-import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import {
+  ThemeProvider,
+  createTheme,
+  CssBaseline,
+  IconButton,
+} from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { deepPurple, lightBlue } from "@mui/material/colors";
-import Layout from "./pages/Layout/Layout";
+import lightTheme from "./themes/lightTheme";
+import darkTheme from "./themes/darkTheme";
+import { Brightness4, Brightness7 } from "@mui/icons-material";
 
 // Configuração do tema em modo escuro
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-    palette: {
-      primary: deepPurple,
-      secondary: lightBlue,
-    },
-  },
-});
-const lightTheme = createTheme({
-  palette: {
-    mode: "light",
-    main: "#ff5252",
-  },
-});
+const darkThemeMode = createTheme(darkTheme);
+const lightThemeMode = createTheme(lightTheme);
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -45,6 +39,13 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/home" element={<Layout children={<Home />} />} />
         </Routes>
+        <IconButton
+          onClick={toggleTheme}
+          color="inherit"
+          style={{ position: "fixed", top: "20px", right: "20px" }}
+        >
+          {isDarkMode ? <Brightness7 /> : <Brightness4 />}{" "}
+        </IconButton>
       </Router>
     </ThemeProvider>
   );

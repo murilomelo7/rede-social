@@ -4,7 +4,9 @@ import {
   Home,
   Mail,
   Notifications,
+  Person2,
   Search,
+  Settings,
 } from "@mui/icons-material";
 
 import {
@@ -46,7 +48,7 @@ function Sidebar() {
     }
   };
 
-  const drawerWidth = 400;
+  const drawerWidth = 300;
 
   return (
     <Drawer
@@ -86,12 +88,12 @@ function Sidebar() {
           </ListItemButton>
           <ListItemButton onClick={() => handleNavigate("profile")}>
             <ListItemIcon>
-              <Bookmark />
+              <Person2 />
             </ListItemIcon>
             <ListItemText primary="Perfil" />
           </ListItemButton>
           <ListItemButton onClick={() => handleNavigate("configs")}>
-            <ListItemIcon>{/* <Gear /> */}</ListItemIcon>
+            <ListItemIcon>{<Settings />}</ListItemIcon>
             <ListItemText primary="Configurações" />
           </ListItemButton>
         </List>
