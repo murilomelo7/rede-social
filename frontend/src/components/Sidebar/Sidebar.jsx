@@ -1,105 +1,151 @@
-import {
-  Bookmark,
-  Gear,
-  Home,
-  Mail,
-  Notifications,
-  Person2,
-  Search,
-  Settings,
-} from "@mui/icons-material";
-
-import {
-  Box,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-} from "@mui/material";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+	Box,
+	Drawer,
+	List,
+	ListItemButton,
+	ListItemIcon,
+	ListItemText,
+	Toolbar,
+	Collapse,
+	Divider,
+} from "@mui/material";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import ReportIcon from "@mui/icons-material/BarChart";
+import PersonIcon from "@mui/icons-material/Person";
+import SettingsIcon from "@mui/icons-material/Settings";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import GroupIcon from "@mui/icons-material/Group";
+import { purple } from "@mui/material/colors";
 
-function Sidebar() {
-  const navigate = useNavigate();
+import styles from "./Sidebar.styles";
 
-  const handleNavigate = (value) => {
-    switch (value) {
-      case "home":
-        return navigate("/home");
-      case "notifications":
-        return navigate("/notifications");
-      case "messages":
-        navigate("/messages");
-        break;
-      case "saves":
-        navigate("/saves");
-        break;
-      case "profile":
-        navigate("/profile");
-        break;
-      case "configs":
-        navigate("/configs");
-        break;
-      default:
-        navigate("/home");
-        break;
-    }
-  };
+const drawerWidth = 250;
 
-  const drawerWidth = 300;
+export default function Sidebar() {
+	const navigate = useNavigate();
+	const [openCadastros, setOpenCadastros] = useState(false);
 
-  return (
-    <Drawer
-      variant="permanent"
-      sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-        [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: "border-box" },
-      }}
-    >
-      <Toolbar />
-      <Box sx={{ overflow: "auto" }}>
-        <List>
-          <ListItemButton onClick={() => handleNavigate("home")}>
-            <ListItemIcon>
-              <Home />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItemButton>
-          <ListItemButton onClick={() => handleNavigate("notifications")}>
-            <ListItemIcon>
-              <Notifications />
-            </ListItemIcon>
-            <ListItemText primary="Notificações" />
-          </ListItemButton>
-          <ListItemButton onClick={() => handleNavigate("messages")}>
-            <ListItemIcon>
-              <Mail />
-            </ListItemIcon>
-            <ListItemText primary="Mensagens" />
-          </ListItemButton>
-          <ListItemButton onClick={() => handleNavigate("saves")}>
-            <ListItemIcon>
-              <Bookmark />
-            </ListItemIcon>
-            <ListItemText primary="Salvos" />
-          </ListItemButton>
-          <ListItemButton onClick={() => handleNavigate("profile")}>
-            <ListItemIcon>
-              <Person2 />
-            </ListItemIcon>
-            <ListItemText primary="Perfil" />
-          </ListItemButton>
-          <ListItemButton onClick={() => handleNavigate("configs")}>
-            <ListItemIcon>{<Settings />}</ListItemIcon>
-            <ListItemText primary="Configurações" />
-          </ListItemButton>
-        </List>
-      </Box>
-    </Drawer>
-  );
+	const handleNavigate = (path) => {
+		navigate(path);
+	};
+
+	const toggleCadastros = () => {
+		setOpenCadastros(!openCadastros);
+	};
+
+	return (
+		<Drawer
+			variant="permanent"
+			sx={{
+				width: drawerWidth,
+				flexShrink: 0,
+				[`& .MuiDrawer-paper`]: {
+					width: drawerWidth,
+					boxSizing: "border-box",
+				},
+			}}
+		>
+			<Toolbar />
+			<Box sx={{ overflow: "auto" }}>
+				<List>
+					{/* Dashboard */}
+					<ListItemButton
+						sx={styles.listItemButtonSubStyle}
+						onClick={() => handleNavigate("/dashboard")}
+					>
+						<ListItemIcon>
+							<DashboardIcon />
+						</ListItemIcon>
+						<ListItemText primary="Dashboard" />
+					</ListItemButton>
+
+					{/* Gerenciamento */}
+					<ListItemButton
+						sx={styles.listItemButtonSubStyle}
+						onClick={() => handleNavigate("/gerenciamento")}
+					>
+						<ListItemIcon>
+							<ManageAccountsIcon />
+						</ListItemIcon>
+						<ListItemText primary="Gerenciamento" />
+					</ListItemButton>
+
+					{/* Cadastros com submenu */}
+					<ListItemButton
+						sx={styles.listItemButtonSubStyle}
+						onClick={toggleCadastros}
+					>
+						<ListItemIcon>
+							<AddBoxIcon />
+						</ListItemIcon>
+						<ListItemText primary="Cadastros" />
+						{openCadastros ? <ExpandLess /> : <ExpandMore />}
+					</ListItemButton>
+
+					<Collapse in={openCadastros} timeout="auto" unmountOnExit>
+						<List component="div" disablePadding>
+							<ListItemButton
+								sx={styles.sublistItemButtonSubStyle}
+								onClick={() => handleNavigate("/cadastros/produtos")}
+							>
+								<ListItemIcon>
+									<InventoryIcon />
+								</ListItemIcon>
+								<ListItemText primary="Produtos" />
+							</ListItemButton>
+							<ListItemButton
+								sx={styles.sublistItemButtonSubStyle}
+								onClick={() => handleNavigate("/cadastros/clientes")}
+							>
+								<ListItemIcon>
+									<GroupIcon />
+								</ListItemIcon>
+								<ListItemText primary="Clientes" />
+							</ListItemButton>
+						</List>
+						<Divider sx={{ my: 1 }} />
+					</Collapse>
+
+					{/* Relatórios */}
+					<ListItemButton
+						sx={styles.listItemButtonSubStyle}
+						onClick={() => handleNavigate("/relatorios")}
+					>
+						<ListItemIcon>
+							<ReportIcon />
+						</ListItemIcon>
+						<ListItemText primary="Relatórios" />
+					</ListItemButton>
+
+					{/* Perfil */}
+					<ListItemButton
+						sx={styles.listItemButtonSubStyle}
+						onClick={() => handleNavigate("/perfil")}
+					>
+						<ListItemIcon>
+							<PersonIcon />
+						</ListItemIcon>
+						<ListItemText primary="Perfil" />
+					</ListItemButton>
+
+					{/* Configurações */}
+					<ListItemButton
+						sx={styles.listItemButtonSubStyle}
+						onClick={() => handleNavigate("/configuracoes")}
+					>
+						<ListItemIcon>
+							<SettingsIcon />
+						</ListItemIcon>
+						<ListItemText primary="Configurações" />
+					</ListItemButton>
+				</List>
+			</Box>
+		</Drawer>
+	);
 }
-
-export default Sidebar;
