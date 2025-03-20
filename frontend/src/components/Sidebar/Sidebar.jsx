@@ -80,6 +80,7 @@ export default function Sidebar() {
 					<ListItemButton
 						sx={styles.listItemButtonSubStyle}
 						onClick={toggleCadastros}
+            title="Cadastros"
 					>
 						<ListItemIcon>
 							<AddBoxIcon />
