@@ -93,7 +93,7 @@ export default function Sidebar() {
 						<List component="div" disablePadding>
 							<ListItemButton
 								sx={styles.sublistItemButtonSubStyle}
-								onClick={() => handleNavigate("/cadastros/produtos")}
+								onClick={() => handleNavigate("/produtos")}
 							>
 								<ListItemIcon>
 									<InventoryIcon />
@@ -102,7 +102,7 @@ export default function Sidebar() {
 							</ListItemButton>
 							<ListItemButton
 								sx={styles.sublistItemButtonSubStyle}
-								onClick={() => handleNavigate("/cadastros/clientes")}
+								onClick={() => handleNavigate("/clientes")}
 							>
 								<ListItemIcon>
 									<GroupIcon />

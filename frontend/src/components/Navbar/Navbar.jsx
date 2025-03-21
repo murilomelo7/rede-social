@@ -1,61 +1,45 @@
-import {
-  Bookmark,
-  Home,
-  Mail,
-  Notifications,
-  Search,
-} from "@mui/icons-material";
-import {
-  Box,
-  Drawer,
-  InputAdornment,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  TextField,
-  Toolbar,
-} from "@mui/material";
+import React from 'react';
+import { Box, Typography, Button } from '@mui/material';
 
-function Navbar() {
-  const drawerWidth = 300;
-
+export default function CustomNavbar() {
   return (
-    <Drawer
-      variant="permanent"
-      anchor="right"
+    <Box
       sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-        [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: "border-box" },
+        width: '100%',
+        height: '60px',
+        backgroundColor: '#1976d2',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        px: 3, // padding horizontal
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
       }}
     >
-      <Box sx={{ overflow: "auto" }}>
-        <List>
-          <ListItem>
-            <TextField
-              type="search"
-              // label="Pesquisar"
-              placeholder="Pesquisar"
-              variant="outlined"
-              fullWidth
-              autoComplete="off"
-              value={""}
-              // onChange={(e) => setFormValue(prevState => ({ ...prevState, name: e.target.value }))}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="start">
-                    <Search />
-                  </InputAdornment>
-                ),
-                style: { borderRadius: "20px" }, // Define o arredondamento aqui
-              }}
-            />
-          </ListItem>
-        </List>
+      {/* Logo ou Título */}
+      <Typography variant="h6" sx={{ color: '#fff', fontWeight: 'bold' }}>
+        MinhaMarca
+      </Typography>
+
+      {/* Links de navegação */}
+      <Box sx={{ display: 'flex', gap: 2 }}>
+        <Button sx={{ color: '#fff', textTransform: 'none' }}>Início</Button>
+        <Button sx={{ color: '#fff', textTransform: 'none' }}>Sobre</Button>
+        <Button sx={{ color: '#fff', textTransform: 'none' }}>Serviços</Button>
+        <Button
+          variant="outlined"
+          sx={{
+            color: '#fff',
+            borderColor: '#fff',
+            textTransform: 'none',
+            '&:hover': {
+              backgroundColor: '#fff',
+              color: '#1976d2',
+            },
+          }}
+        >
+          Contato
+        </Button>
       </Box>
-    </Drawer>
+    </Box>
   );
 }
-
-export default Navbar;
