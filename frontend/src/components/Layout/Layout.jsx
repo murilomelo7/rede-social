@@ -1,44 +1,41 @@
 import React, { useState } from "react";
-import { CssBaseline, Box, Container, alpha } from "@mui/material";
+import { CssBaseline, Box } from "@mui/material";
 import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
-import { useTheme } from "@emotion/react";
 
 function Layout({ children }) {
-	const theme = useTheme();
+  const [open, setOpen] = useState(true);
 
-	return (
-		<Box
-			sx={{
-				display: "flex",
-			}}
-		>
-			<CssBaseline />
-			<Sidebar />
-			<Box
-				component="main"
-				sx={{
-					flexGrow: 1,
-					minHeight: "100vh",
-					padding: 0,
-					margin: 0,
-					paddingTop: 0,
-					marginTop: 0,
-					display: "flex",
-					width: "100%",
-				}}
-			>
-				<Container
-					sx={{
-						minHeight: "100vh",
-						width: "100%",
-					}}
-				>
-					{children}
-				</Container>
-			</Box>
-		</Box>
-	);
+  const toggleSidebar = () => {
+    setOpen(!open);
+  };
+
+  return (
+    <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+      <CssBaseline />
+
+      {/* Navbar */}
+      <Navbar toggleSidebar={toggleSidebar} />
+
+      <Box sx={{ display: "flex", flexGrow: 1 }}>
+        {/* Sidebar */}
+        <Sidebar open={open} toggleSidebar={toggleSidebar} />
+
+        {/* Main content */}
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            overflow: "auto",
+            marginLeft: open ? "0px" : "0", // Ajusta a margem à largura do Sidebar
+            transition: "margin-left 0.3s ease-in-out", // Transição suave
+          }}
+        >
+          {children}
+        </Box>
+      </Box>
+    </Box>
+  );
 }
 
 export default Layout;
