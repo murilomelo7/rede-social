@@ -6,11 +6,14 @@ import {
   IconButton,
   Avatar,
   Typography,
+  useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar({ toggleSidebar }) {
+    const theme = useTheme();
+  
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
@@ -22,8 +25,8 @@ export default function Navbar({ toggleSidebar }) {
       position="sticky"
       sx={{
         zIndex: (theme) => theme.zIndex.drawer + 1,
-        backgroundColor: "#3f51b5", // ou qualquer cor que você prefira
-        height: "64px", // Defina uma altura fixa para o Navbar
+        backgroundColor: "primary.main",
+        height: "64px",
       }}
     >
       <Toolbar
@@ -47,7 +50,7 @@ export default function Navbar({ toggleSidebar }) {
             sx={{ width: 40, height: 40 }}
           />
           <Typography sx={{ marginLeft: 2, fontWeight: "bold" }}>
-            João Silva {/* Substitua pelo nome real do usuário */}
+            Murilo Melo
           </Typography>
         </Box>
       </Toolbar>
