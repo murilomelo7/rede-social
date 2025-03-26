@@ -19,6 +19,7 @@ import darkTheme from "./themes/darkTheme";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import Profile from "./pages/Profile/Profile";
 import ProdutoList from "./pages/Produto/ProdutoList";
+import ProdutoForm from "./pages/Produto/ProdutoForm";
 
 // Configuração do tema em modo escuro
 const darkThemeMode = createTheme(darkTheme);
@@ -42,6 +43,8 @@ function App() {
           <Route path="/home" element={<Layout children={<Home />} />} />
           <Route path="/profile" element={<Layout children={<Profile />} />} />
           <Route path="/produtos" element={<Layout children={<ProdutoList />} />} />
+          <Route path="/produtos/new" element={<Layout children={<ProdutoForm />} />} />
+        
         </Routes>
         {/* <IconButton
           onClick={toggleTheme}
