@@ -15,14 +15,12 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-export default function ProdutoForm() {
+export default function CategoriaForm() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
     nome: "",
     descricao: "",
-    preco: "",
-    categoria: "",
   });
 
   const handleBack = () => {
@@ -35,7 +33,7 @@ export default function ProdutoForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Produto cadastrado:", form);
+    console.log("Categoria cadastrado:", form);
   };
 
   return (
@@ -69,7 +67,7 @@ export default function ProdutoForm() {
         </IconButton>
 
         <Typography sx={{ flexGrow: 1, fontWeight: "bold" }}>
-          Novo Produto
+          Nova categoria
         </Typography>
         <Box>
           <Button
@@ -98,7 +96,7 @@ export default function ProdutoForm() {
         <FormControl>
           <TextField
             fullWidth
-            label="Nome do Produto"
+            label="Nome da categoria"
             name="nome"
             value={form.nome}
             onChange={handleChange}
@@ -116,41 +114,6 @@ export default function ProdutoForm() {
             multiline
             rows={4}
           />
-        </FormControl>
-
-        <FormControl>
-          <TextField
-            label="Preço"
-            name="preco"
-            value={form.preco}
-            onChange={handleChange}
-            type="number"
-            slotProps={{
-              input: {
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <AttachMoney />
-                  </InputAdornment>
-                ),
-              },
-            }}
-          />
-        </FormControl>
-
-        <FormControl>
-          <InputLabel>Categoria</InputLabel>
-          <Select
-            label="Categoria"
-            name="categoria"
-            value={form.categoria}
-            onChange={handleChange}
-            variant="outlined"
-          >
-            <MenuItem value="eletronicos">Eletrônicos</MenuItem>
-            <MenuItem value="vestuario">Vestuário</MenuItem>
-            <MenuItem value="alimentos">Alimentos</MenuItem>
-            <MenuItem value="livros">Livros</MenuItem>
-          </Select>
         </FormControl>
       </Box>
     </Box>

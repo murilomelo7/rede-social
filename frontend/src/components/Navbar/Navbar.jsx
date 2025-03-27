@@ -12,8 +12,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar({ toggleSidebar }) {
-    const theme = useTheme();
-  
+  const theme = useTheme();
+
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {

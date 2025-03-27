@@ -3,7 +3,8 @@ import { Box, Typography, IconButton } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export default function ProdutoList() {
+
+export default function CategoriaList() {
   const navigate = useNavigate();
 
   const colunas = [
@@ -41,7 +42,7 @@ export default function ProdutoList() {
   ];
 
   const handleNewForm = () => {
-    navigate("/produtos/new");
+    navigate("/categorias/new");
   };
 
   const handleBack = () => {
@@ -79,7 +80,7 @@ export default function ProdutoList() {
           <ArrowBack />
         </IconButton>
         <Typography sx={{ flexGrow: 1, fontWeight: "bold" }}>
-          Produtos
+          Categorias
         </Typography>
 
         <Box>
